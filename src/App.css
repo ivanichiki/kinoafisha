@@ -4,10 +4,16 @@
  
 background-color: black;
 height: 200vh;
-display: flex;
-justify-content: center;
+
 }
 
+.Header {
+  height: 70px;
+  background-color: #121212;
+  width: 100%;
+  margin-bottom: 20px;
+ 
+}
 
 img {
  overflow: hidden;
@@ -20,9 +26,12 @@ img {
  
 }
 .wrapper {
-  margin-top: 4%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .brnwrapper {
+ 
   margin-left: 30px;
   position: relative;
   margin-right: 20px;
@@ -71,8 +80,14 @@ img {
   left: -2%;
 
 }
-
-
+.sl {
+  top: 230px;
+  left: 93%;
+}
+.lsl {
+  top: 230px;
+  left: 1.5%;
+}
 .filmTitle {
   background-color: #1a1a1a;
   position: relative;
@@ -100,7 +115,7 @@ img {
   color: #b5bbb1;
 }
 .movieTitle {
-  margin-left: 40px;
+  margin-left: 370px;
 
   margin-bottom: 10px;
   color: silver;
@@ -116,7 +131,7 @@ video  {
   display: flex;
   height: 500px;
 
-  margin-bottom: 30px;
+  margin-bottom: 70px;
 }
 .videocontainer img {
   height: 100%;
