@@ -66,6 +66,8 @@ img {
   top: 130px;
   left: 95.2%;
   cursor: pointer;
+
+  -webkit-user-select: none;
 }
 
 .rightButton span {
@@ -78,7 +80,7 @@ img {
 
 .left {
   left: -2%;
-
+  -webkit-user-select: none;
 }
 .sl {
   top: 230px;
@@ -147,4 +149,8 @@ display: flex;
 }
 .videocontainer iframe{
 margin-right: 20px;
+}
+.preloader {
+  margin-left: 30%;
+  margin-top: 14%;
 }

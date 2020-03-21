@@ -42,18 +42,13 @@ function App() {
   };
 
   async function Hot() {
-    const response = await fetch(`${API_URL}/tv/on_the_air?api_key=${API_KEY_3}&language=en-US&page=1`);
+    const response = await fetch(`${API_URL}/tv/on_the_air?api_key=${API_KEY_3}&language=en&page=1`);
     const json = await response.json()
     console.log(json)
     dispatch({ type: 'setHot', value: json })
     dispatch({ type: "settvLoad" })
   };
-  async function Hotdouble(key) {
-    const response = await fetch(`${API_URL}/tv/${key}/videos?api_key=${API_KEY_3}&language=en-US&page=1`);
-    const json = await response.json()
 
-
-  };
 
   useEffect(() => {
 
@@ -69,7 +64,7 @@ function App() {
     }
   }, [])
 
-  const initialState = { films: [], tvshows: [], hot: [], load: true, tvload: true, right: 0, rightbtn: true, leftbtn: false, TVrightbtn: true, TVleftbtn: false, tvRight: 0, vRight: 0, Vleftbtn: false, Vrightbtn: true }
+  const initialState = { films: [], tvshows: [], hot: [], load: true, tvload: true, right: 0, rightbtn: true, leftbtn: false, TVrightbtn: true, TVleftbtn: false, tvRight: 0, vRight: 0, Vleftbtn: false, Vrightbtn:true,toggle:false }
   const filmReducer = (state, action) => {
     switch (action.type) {
       case 'setIstate':
@@ -121,14 +116,14 @@ function App() {
       case 'Videoscroll':
         return {
           ...state,
-          vRight: state.vRight + action.value,
+          vRight: state.vRight+action.value<=1300*19?state.vRight + action.value: 0,
           Vleftbtn: state.vRight + action.value == 0 ? false : true,
+          
           Vrightbtn: state.vRight + action.value == action.value * 19 ? false : true,
 
         }
       case 'linkforvideo':
-        console.log(action.value)
-        console.log(action.id)
+   
         return {
           ...state,
           hot: state.hot.map(el => {
@@ -138,7 +133,19 @@ function App() {
             else return el
           })
         }
-
+        case 'autoscroll': {
+          console.log('hi')
+          return {
+            ...state, 
+            toggle:true
+          }
+        }
+        case 'againautoscroll': {
+          return {
+            ...state, 
+            toggle:false
+          }
+        }
       default:
         return state;
     }

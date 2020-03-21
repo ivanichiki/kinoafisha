@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { FilmContext } from '../App'
 import { FilmContainer } from './FilmContainer'
 import { TVContainer } from './TVContainer'
@@ -8,30 +8,59 @@ import { Header } from './Header'
 
 const Main = props => {
 
-
-
+  const [tog, settog] = useState(true)
+  const [interv, setInterv] = useState()
   const { state, dispatch } = useContext(FilmContext)
-  console.log(state.films)
+
+
+  useEffect(() => {
+
+    if (state.toggle) {
+     clearInterval(interv)
+    }
+
+    if (state.toggle!==true& tog) {
+      const interval =
+        setInterval(() => {
+          
+            dispatch({ type: 'Videoscroll', value: 1300 })
+          
+        }, 5000)
+      setInterv(interval)
+    }
+    return function cleanup() {
+      clearInterval(interv)
+    }
+
+  }, [state.toggle])
+
+
+
+
+
+  console.log(tog)
   return (
     <div className='wrapper'>
 
 
-<div className='slider'>
-  <div className='horizontal slider'>
-    <Spring
-      from={{ right: 0 }}
-      to={{ right: state.vRight }}
-      config={{ duration: 300 }}
-    >
-      {props =>
-        <SliderContainer type={state.films} props={props} />
-      }
-    </Spring>
-  </div>
-  <div style={state.Vrightbtn ? { display: 'block' } : { display: 'none' }} onClick={() => dispatch({ type: 'Videoscroll', value: 1300 })} className='rightButton sl'> <span className='stelka'> &rsaquo; </span> </div>
 
-  {state.Vleftbtn && <div onClick={() => dispatch({ type: 'Videoscroll', value: -1300 })} className='rightButton left lsl'> <span className='stelka'> &lsaquo; </span> </div>}
-</div>
+      <div className='slider'>
+        <div  onMouseLeave={()=> dispatch({type:'againautoscroll'})} onMouseEnter={() => dispatch({ type: 'autoscroll' })}
+          className='horizontal slider'>
+          <Spring
+            from={{ right: 0 }}
+            to={{ right: state.vRight }}
+            config={{ duration: 200 }}
+          >
+            {props =>
+              <SliderContainer settog={settog} type={state.films} props={props} />
+            }
+          </Spring>
+        </div>
+        <div onMouseEnter={() => dispatch({ type: 'autoscroll' })} onClick={()=> settog} style={state.Vrightbtn ? { display: 'block' } : { display: 'none' }} onClick={() => dispatch({ type: 'Videoscroll', value: 1300 })} className={`rightButton sl ${state.toggle && 'active'}`}> <span className='stelka'> &rsaquo; </span> </div>
+
+        {state.Vleftbtn&state.vRight!==0 && <div onMouseEnter={() => dispatch({ type: 'autoscroll' })} onClick={() => dispatch({ type: 'Videoscroll', value: -1300 })} className='rightButton left lsl'> <span className='stelka'> &lsaquo; </span> </div>}
+      </div>
 
 
 
