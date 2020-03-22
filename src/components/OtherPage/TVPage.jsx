@@ -68,7 +68,7 @@ export const TVPage = ({ match }) => {
             </div>
             <img src={`https://image.tmdb.org/t/p/w500${moviedata.poster_path}`} />
 
-            {!results ? <div className='preloader' style={{ width: '990px' }}> <SVGLoaders.Bars /> </div> : <iframe width="980px" height="515" src={`https://www.youtube-nocookie.com/embed/${results}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
+            {!results ? <div className='preloader' style={{ width: '990px' }}> <SVGLoaders.Bars /> </div> : <iframe   src={`https://www.youtube-nocookie.com/embed/${results}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
             <h1>About Film</h1>
             <div className='text'>{moviedata.overview} </div>
 
