@@ -24,7 +24,7 @@ img {
  object-fit: cover;
  padding-right: 10px;
  padding-left: 10px;
-
+ cursor: pointer;
  
 }
 .wrapper {
@@ -33,12 +33,13 @@ img {
   justify-content: center;
 }
 .brnwrapper {
- 
+
   margin-left: 30px;
   position: relative;
   margin-right: 20px;
   display: flex;
   width: 1200px;
+  flex-wrap: wrap;
 }
 .horizontal{
   
@@ -50,6 +51,24 @@ img {
   overflow: hidden;
   
 }
+
+@media screen and (max-width: 1200px) {
+  .horizontal {
+     width: 330px;
+
+    
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .rightButton {
+    display: none;
+  }
+  
+}
+
+
+
 .imgcontainer {
   display: flex;
   position: relative;
@@ -119,8 +138,8 @@ img {
   color: #b5bbb1;
 }
 .movieTitle {
-  margin-left: 370px;
 
+  margin-left: 10px;
   margin-bottom: 10px;
   color: silver;
   font-family: Arial, Helvetica, sans-serif;
@@ -147,7 +166,8 @@ width: 1300px;
 position: relative;
 margin-right: 20px;
 display: flex;
-
+object-fit: cover;
+overflow: hidden;
 }
 .videocontainer iframe{
 margin-right: 20px;
@@ -155,4 +175,22 @@ margin-right: 20px;
 .preloader {
   margin-left: 30%;
   margin-top: 14%;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .videocontainer img {
+    margin-left: 10px;
+    width: 350px;
+    margin-right: 920px;
+
+  }
+  
+}
+@media screen and (max-width: 1200px) {
+  .videocontainer iframe{
+    display: none;
+
+  }
+  
 }

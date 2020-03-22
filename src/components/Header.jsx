@@ -6,8 +6,10 @@ export const Header = () => {
   return (
     <div className='Header'>
         <div className='wrap_header'>
+          <div className='littleheader'>
         <NavLink to='/'>      <img src='https://upload.wikimedia.org/wikipedia/commons/6/6a/New-imdb-logo.png' />
         </NavLink>
+        </div>
         </div>
     </div>
   )

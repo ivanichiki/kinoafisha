@@ -52,7 +52,7 @@ export const SliderContainer = (props) => {
              {g<20&& <div className='videocontainer'>
              <NavLink to={`/d/${el.id}`}>
 
-                <img src={`https://image.tmdb.org/t/p/w500${el.poster_path}`} />
+                <img className='sliderimg' src={`https://image.tmdb.org/t/p/w500${el.poster_path}`} />
                 </NavLink>
               {!el.link ? <div className='preloader' style={{width:'990px'}}> <SVGLoaders.Bars /> </div>:  <iframe onClicck={() => props.settog(false)} height='500' width='960px' src={`https://www.youtube-nocookie.com/embed/${el.link}?autoplay=0`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
               </div>}
