@@ -5,6 +5,7 @@ import { API_KEY_3, API_URL } from './api';
 import { Header } from './components/Header';
 import { BrowserRouter, Route, HashRouter } from 'react-router-dom';
 import { OtherPage } from './components/OtherPage/OtherPage';
+import { TVPage } from './components/OtherPage/TVPage';
 
 
 export const FilmContext = React.createContext(null)
@@ -16,7 +17,7 @@ function App() {
 
     const response = await fetch(`${API_URL}/trending/movie/week?sort_by=popularity.desc&api_key=${API_KEY_3}`);
     const json = await response.json()
-    console.log(json)
+
     dispatch({ type: 'setIstate', value: json })
     dispatch({ type: "setLoad" })
   };
@@ -24,7 +25,7 @@ function App() {
 
     const response = await fetch(`${API_URL}/trending/movie/week?sort_by=popularity.desc&page=2&api_key=${API_KEY_3}`);
     const json = await response.json()
-    console.log(json)
+
     dispatch({ type: 'setIstate', value: json })
     dispatch({ type: "setLoad" })
   };
@@ -32,14 +33,14 @@ function App() {
   async function fetchTVShows() {
     const response = await fetch(`${API_URL}/trending/tv/week?sort_by=popularity.desc&api_key=${API_KEY_3}`);
     const json = await response.json()
-    console.log(json)
+
     dispatch({ type: 'setTV', value: json })
     dispatch({ type: "settvLoad" })
   };
   async function fetchTVShows2() {
     const response = await fetch(`${API_URL}/trending/tv/week?sort_by=popularity.desc&page=2&api_key=${API_KEY_3}`);
     const json = await response.json()
-    console.log(json)
+ 
     dispatch({ type: 'setTV', value: json })
     dispatch({ type: "settvLoad" })
   };
@@ -47,7 +48,7 @@ function App() {
   async function Hot() {
     const response = await fetch(`${API_URL}/tv/on_the_air?api_key=${API_KEY_3}&language=en&page=1`);
     const json = await response.json()
-    console.log(json)
+
     dispatch({ type: 'setHot', value: json })
     dispatch({ type: "settvLoad" })
   };
@@ -60,14 +61,10 @@ function App() {
     fetchMovie2()
     fetchTVShows2()
     fetchTVShows()
-    let i = 0;
-    while (i < 10) {
-      // Hotdouble(state.hot[i].id)
-      i++;
-    }
+
   }, [])
 
-  const initialState = { films: [], tvshows: [], hot: [], load: true, tvload: true, right: 0, rightbtn: true, leftbtn: false, TVrightbtn: true, TVleftbtn: false, tvRight: 0, vRight: 0, Vleftbtn: false, Vrightbtn:true,toggle:false, img:'' }
+  const initialState = { films: [], tvshows: [], hot: [], load: true, tvload: true, right: 0, rightbtn: true, leftbtn: false, TVrightbtn: true, TVleftbtn: false, tvRight: 0, vRight: 0, Vleftbtn: false, Vrightbtn:true,toggle:false }
   const filmReducer = (state, action) => {
     switch (action.type) {
       case 'setIstate':
@@ -149,12 +146,7 @@ function App() {
             toggle:false
           }
         }
-        case 'setOtherPage': {
-          return {
-            ...state,
-            img: action.img
-          }
-        }
+      
       default:
         return state;
     }
@@ -164,20 +156,8 @@ function App() {
   const [state, dispatch] = useReducer(filmReducer, initialState)
 
 
-
-  useEffect(() => {
-
-    console.log(state.hot)
-    let i = 0;
-    while (i < 10) {
-      // Hotdouble(state.hot[i].id)
-      i++;
-    }
-  }, [])
-
-
   return (
-    <HashRouter>
+    <BrowserRouter>
     <FilmContext.Provider
       value={{ state, dispatch }}>
 
@@ -185,12 +165,14 @@ function App() {
       <div className="App">
         <Header />
        <Route exact path='/' render={()=>  <Main />}/>
-       <Route path='/other' render={()=>  <OtherPage />}/>  
-
+       <Route exact path="/s/:userid"
+        component= {OtherPage}/>  
+        <Route exact path="/d/:userid"
+        component= {TVPage}/>  
       </div>
 
     </FilmContext.Provider>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

@@ -11,27 +11,29 @@ const Main = props => {
   const [tog, settog] = useState(true)
   const [interv, setInterv] = useState()
   const { state, dispatch } = useContext(FilmContext)
-
+  let clearup= ()=> { clearInterval(interv)}
 
   useEffect(() => {
+   
+   
+      
+        const interval =
+          setInterval(() => {
+            
+              dispatch({ type: 'Videoscroll', value: 1300 })
+              console.log('Я утечка памяти, всё порчу')
+          }, 5000)
+         
+     
+          if (state.toggle) {
+            clearInterval(interval)
+          }
 
-    if (state.toggle) {
-     clearInterval(interv)
-    }
-
-    if (state.toggle!==true& tog) {
-      const interval =
-        setInterval(() => {
-          
-            dispatch({ type: 'Videoscroll', value: 1300 })
-          
-        }, 5000)
-      setInterv(interval)
-    }
-    return function cleanup() {
-      clearInterval(interv)
-    }
-
+ 
+    return  () => 
+      clearInterval(interval)
+      
+  
   }, [state.toggle])
 
 

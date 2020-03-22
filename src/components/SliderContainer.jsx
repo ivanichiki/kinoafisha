@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { FilmContext } from '../App'
 import { API_URL, API_KEY_3 } from '../api'
 import * as SVGLoaders from 'svg-loaders-react';
+import { NavLink } from 'react-router-dom';
 
 export const SliderContainer = (props) => {
 
@@ -49,13 +50,13 @@ export const SliderContainer = (props) => {
           {state.hot.map(el =>
             <div >
              {g<20&& <div className='videocontainer'>
-              <a href={`https://www.google.com/search?q=${el.name}&oq=${el.name}`}>
+             <NavLink to={`/d/${el.id}`}>
+
                 <img src={`https://image.tmdb.org/t/p/w500${el.poster_path}`} />
-              </a>
-              {!el.link ? <div className='preloader' style={{width:'990px'}}> <SVGLoaders.Bars /> </div>:  <iframe onClicck={() => props.settog(false)} height='500' width='960px' src={`https://www.youtube.com/embed/${el.link}?autoplay=0`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
+                </NavLink>
+              {!el.link ? <div className='preloader' style={{width:'990px'}}> <SVGLoaders.Bars /> </div>:  <iframe onClicck={() => props.settog(false)} height='500' width='960px' src={`https://www.youtube-nocookie.com/embed/${el.link}?autoplay=0`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
               </div>}
             {g++}
-            {console.log(g)}
               
             </div>)}
 

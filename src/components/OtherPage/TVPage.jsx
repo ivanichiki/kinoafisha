@@ -2,9 +2,9 @@ import React, { useContext, useState, useEffect } from 'react'
 import './OtherStyle.scss'
 import { API_URL, API_KEY_3 } from '../../api'
 import * as SVGLoaders from 'svg-loaders-react';
-import { withRouter, useParams } from 'react-router-dom'
 
-export const OtherPage = ({ match }) => {
+
+export const TVPage = ({ match }) => {
   const [results, setresult] = useState()
   const [moviedata, setmoviedata] = useState()
 
@@ -19,7 +19,7 @@ export const OtherPage = ({ match }) => {
   }, [])
 
   async function Hotdouble() {
-    const response = await fetch(`${API_URL}/movie/${match.params.userid}/videos?api_key=${API_KEY_3}&language=en-US&page=1`);
+    const response = await fetch(`${API_URL}/tv/${match.params.userid}/videos?api_key=${API_KEY_3}&language=en-US&page=1`);
     const json = await response.json()
     if (json.results) {
       setresult(json.results[0].key)
@@ -28,7 +28,7 @@ export const OtherPage = ({ match }) => {
   };
 
   async function getMovieDetails() {
-    const response = await fetch(`${API_URL}/movie/${match.params.userid}?api_key=${API_KEY_3}&language=en-US`);
+    const response = await fetch(`${API_URL}/tv/${match.params.userid}?api_key=${API_KEY_3}&language=en-US`);
 
     const json = await response.json()
 
@@ -50,11 +50,11 @@ export const OtherPage = ({ match }) => {
           <div className='filmHeader'>
             <div className='mtitle'>
 
-              {moviedata.title}
+              {moviedata.name}
             </div>
             <div className='date'>
 
-              {`(${moviedata.release_date.slice(0,-6)})`}
+              {`(${moviedata.first_air_date.slice(0,-6)})`}
             </div>
           </div>
           <img src={`https://image.tmdb.org/t/p/w500${moviedata.poster_path}`} />
@@ -75,5 +75,4 @@ export const OtherPage = ({ match }) => {
     </div>
   )
 }
-
 
