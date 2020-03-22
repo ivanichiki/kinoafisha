@@ -3,6 +3,9 @@ import './App.css';
 import Main from './components/main';
 import { API_KEY_3, API_URL } from './api';
 import { Header } from './components/Header';
+import { BrowserRouter, Route, HashRouter } from 'react-router-dom';
+import { OtherPage } from './components/OtherPage/OtherPage';
+
 
 export const FilmContext = React.createContext(null)
 
@@ -64,7 +67,7 @@ function App() {
     }
   }, [])
 
-  const initialState = { films: [], tvshows: [], hot: [], load: true, tvload: true, right: 0, rightbtn: true, leftbtn: false, TVrightbtn: true, TVleftbtn: false, tvRight: 0, vRight: 0, Vleftbtn: false, Vrightbtn:true,toggle:false }
+  const initialState = { films: [], tvshows: [], hot: [], load: true, tvload: true, right: 0, rightbtn: true, leftbtn: false, TVrightbtn: true, TVleftbtn: false, tvRight: 0, vRight: 0, Vleftbtn: false, Vrightbtn:true,toggle:false, img:'' }
   const filmReducer = (state, action) => {
     switch (action.type) {
       case 'setIstate':
@@ -146,6 +149,12 @@ function App() {
             toggle:false
           }
         }
+        case 'setOtherPage': {
+          return {
+            ...state,
+            img: action.img
+          }
+        }
       default:
         return state;
     }
@@ -167,20 +176,21 @@ function App() {
   }, [])
 
 
-
   return (
+    <HashRouter>
     <FilmContext.Provider
       value={{ state, dispatch }}>
 
 
       <div className="App">
         <Header />
-        <Main />
-
+       <Route exact path='/' render={()=>  <Main />}/>
+       <Route path='/other' render={()=>  <OtherPage />}/>  
 
       </div>
 
     </FilmContext.Provider>
+    </HashRouter>
   );
 }
 
