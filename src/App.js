@@ -46,7 +46,7 @@ function App() {
   };
 
   async function Hot() {
-    const response = await fetch(`${API_URL}/tv/on_the_air?api_key=${API_KEY_3}&language=en&page=1`);
+    const response = await fetch(`${API_URL}/tv/on_the_air?api_key=${API_KEY_3}&language=en&page=1&sort_b=ypopularity.desc`);
     const json = await response.json()
 
     dispatch({ type: 'setHot', value: json })

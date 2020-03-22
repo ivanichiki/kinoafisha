@@ -13,17 +13,14 @@ export const SliderContainer = (props) => {
 
   async function Hotdouble(id) {
     const response = await fetch(`${API_URL}/tv/${state.hot[id].id}/videos?api_key=${API_KEY_3}&language=en-US&page=1`);
-    const responseRU = await fetch(`${API_URL}/tv/${state.hot[id].id}/videos?api_key=${API_KEY_3}&language=ru`);
     const json = await response.json()
-    const jsonRU = await responseRU.json()
+ 
     console.log(json)
     let results = ''
 
-    if (jsonRU.results[0]) {
-      results = jsonRU.results[0].key
-    }
+  
 
-    else if (json.results[0]) {
+    if (json.results[0]) {
       results = json.results[0].key
     }
 
@@ -33,7 +30,7 @@ export const SliderContainer = (props) => {
 
   let i = 0;
   if (state.hot.length > 0 & order) {
-    while (i < 19) {
+    while (i < 20) {
       Hotdouble(i)
       i++;
 
