@@ -6,12 +6,17 @@
   .wr {
     display: flex;
     flex-wrap: wrap;
+    
     .filmHeader {
       width: 100%;
-      height: 50px;
+      height: 70px;
       margin-left: 10px;
       display: flex;
-        .mtitle{
+      justify-content: space-between;
+      .column {
+        display: flex;
+      }
+         .mtitle{
           font-size: 30px;
           font-family: Arial, Helvetica, sans-serif;
           color: white;
@@ -21,6 +26,32 @@
           color: #c0c0c0;
           font-size: 24px;
           
+        }
+        .star {
+          color: #e4bb24;
+          font-size: 38px;
+          margin-right: 5px;
+
+        }
+        .rate {
+         
+          color: white;
+          font-size: 26px;
+          margin-right: 20px;
+          position: relative;
+          top: 5px;
+        }
+        .podsos{
+          color: #929090;
+          position: relative;
+          right: 24px;
+          top: 5px;
+        }
+        .count {
+          position: relative;
+          font-size: 12px;
+          bottom: 4px;
+          color: #c0c0c0;
         }
       }
     

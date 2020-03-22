@@ -7,6 +7,7 @@ min-height: 100vh;
 
 }
 
+
 .Header {
   height: 70px;
   background-color: #121212;
@@ -23,6 +24,7 @@ img {
  object-fit: cover;
  padding-right: 10px;
  padding-left: 10px;
+
  
 }
 .wrapper {
