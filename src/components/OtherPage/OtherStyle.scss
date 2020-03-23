@@ -50,8 +50,8 @@
         .podsos{
           color: #929090;
           position: relative;
-          right: 24px;
-          top: 5px;
+          right: 18px;
+          top: 15px;
         }
         .count {
           position: relative;
@@ -59,28 +59,41 @@
           bottom: 4px;
           color: #c0c0c0;
         }
+        .together {
+          display: flex;
+        }
         @media screen and (max-width: 1200px){
           .mtitle{
             font-size: 18px;
+            width: 250%;
+            
           }
           .date {
             font-size: 16px;
-            margin-left: 0px;
+            margin-left: 5px;
+            width: 100%;
           }
           .rate { 
             font-size: 16px;
             margin-right: 20px;
         
+        
           }
           .podsos{
-        
+            display: block;
             font-size: 12px;
+            width: 100%;
+            top: 8px
             
           }
           .count {
             font-size: 8px;
             bottom: 4px;
            
+          }
+          .star {
+            position: relative;
+            bottom: 5px;
           }
         }
       }

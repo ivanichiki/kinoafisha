@@ -60,7 +60,7 @@ export const TVPage = ({ match }) => {
             </div>
             <div className='column'>
               <div className='star'>&#9733;</div>
-              <div > <div> <span className='rate'> {moviedata.vote_average} </span> <span className='podsos'>/10</span></div>
+              <div > <div className='together'> <span className='rate'> {moviedata.vote_average} </span> <span className='podsos'>/10</span></div>
                 <div> <span className='count'>{moviedata.vote_count}  </span> </div>
               </div>
             </div>
