@@ -71,6 +71,7 @@ export const OtherPage = ({ match }) => {
 
           {!results ? <div className='preloader' style={{ width: '990px' }}> <SVGLoaders.Bars /> </div> : <iframe width="980px" height="515" src={`https://www.youtube-nocookie.com/embed/${results}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}
           <h1>About Film</h1>
+          <img className='hiddenimg' src={`https://image.tmdb.org/t/p/w500${moviedata.poster_path}`} />
           <div className='text'>{moviedata.overview} </div>
 
 

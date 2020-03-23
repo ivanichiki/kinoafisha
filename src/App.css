@@ -54,7 +54,7 @@ img {
 
 @media screen and (max-width: 1200px) {
   .horizontal {
-     width: 330px;
+     width: 100%;
 
     
   }
@@ -75,6 +75,14 @@ img {
 
 
 }
+@media screen and (max-width: 1200px) {
+  .sliderimgconainer {
+   height: 520px;
+
+  }
+  
+}
+
 
 .rightButton{
   text-align: center;
@@ -180,9 +188,11 @@ margin-right: 20px;
 
 @media screen and (max-width: 1200px) {
   .videocontainer img {
-    margin-left: 10px;
-    width: 350px;
-    margin-right: 920px;
+    margin-left: 15px;
+    width: 355px;
+    height: 480px;
+    margin-right: 910px;
+  
 
   }
   

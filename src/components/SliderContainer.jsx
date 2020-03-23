@@ -46,7 +46,7 @@ export const SliderContainer = (props) => {
     <div>
       {state.tvload ? 'Loading' :
 
-        <div style={props.props} className='imgcontainer'>
+        <div style={props.props} className='imgcontainer sliderimgconainer'>
           {state.hot.map(el =>
             <div >
              {g<19&& <div className='videocontainer'>
