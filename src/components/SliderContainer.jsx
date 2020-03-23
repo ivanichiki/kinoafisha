@@ -49,7 +49,7 @@ export const SliderContainer = (props) => {
         <div style={props.props} className='imgcontainer'>
           {state.hot.map(el =>
             <div >
-             {g<20&& <div className='videocontainer'>
+             {g<19&& <div className='videocontainer'>
              <NavLink to={`/d/${el.id}`}>
 
                 <img className='sliderimg' src={`https://image.tmdb.org/t/p/w500${el.poster_path}`} />

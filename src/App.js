@@ -116,10 +116,10 @@ function App() {
       case 'Videoscroll':
         return {
           ...state,
-          vRight: state.vRight+action.value<=1300*19?state.vRight + action.value: 0,
+          vRight: state.vRight+action.value<=1300*18?state.vRight + action.value: 0,
           Vleftbtn: state.vRight + action.value == 0 ? false : true,
           
-          Vrightbtn: state.vRight + action.value == action.value * 19 ? false : true,
+          Vrightbtn: state.vRight + action.value == action.value * 18 ? false : true,
 
         }
       case 'linkforvideo':
