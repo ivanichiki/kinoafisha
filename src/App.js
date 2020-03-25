@@ -157,7 +157,7 @@ function App() {
 
 
   return (
-    <BrowserRouter>
+    <HashRouter>
     <FilmContext.Provider
       value={{ state, dispatch }}>
 
@@ -172,7 +172,7 @@ function App() {
       </div>
 
     </FilmContext.Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
