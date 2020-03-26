@@ -40,7 +40,7 @@ const Main = props => {
 
 
 
-  console.log(tog)
+  
   return (
     <div className='wrapper'>
 

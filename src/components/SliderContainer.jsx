@@ -7,16 +7,16 @@ import { NavLink } from 'react-router-dom';
 export const SliderContainer = (props) => {
 
   const { state, dispatch } = useContext(FilmContext)
-  console.log(state.hot)
+
   const [order, setorder] = useState(true)
-  const [loader, setLoader] = useState(true)
+
 
   async function Hotdouble(id) {
     const response = await fetch(`${API_URL}/tv/${state.hot[id].id}/videos?api_key=${API_KEY_3}&language=en-US&page=1`);
     const responseRU = await fetch(`${API_URL}/tv/${state.hot[id].id}/videos?api_key=${API_KEY_3}&language=ru`);
     const json = await response.json()
     const jsonRU = await responseRU.json()
-    console.log(json)
+    
     let results = ''
 
     if (jsonRU.results[0]) {
@@ -73,3 +73,7 @@ export const SliderContainer = (props) => {
     </div>
   )
 }
+
+
+
+

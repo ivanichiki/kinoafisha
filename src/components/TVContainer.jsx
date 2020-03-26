@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom'
 export const TVContainer = (props) => {
 
   const { state, dispatch } = useContext(FilmContext)
-  console.log(state.tvshows.results)
+ 
   return (
     <div>
       {state.tvload ? 'Loading' :
