@@ -5,7 +5,7 @@ import * as SVGLoaders from 'svg-loaders-react';
 
 
 export const TVPage = ({ match }) => {
-  const [results, setresult] = useState()
+  const [results, setresult] = useState('')
   const [moviedata, setmoviedata] = useState()
 
 
@@ -19,6 +19,7 @@ export const TVPage = ({ match }) => {
   }, [match.params.userid])
 
   async function Hotdouble() {
+    setresult('')
     const response = await fetch(`${API_URL}/tv/${match.params.userid}/videos?api_key=${API_KEY_3}&language=en-US&page=1`);
     const responseRU = await fetch(`${API_URL}/tv/${match.params.userid}/videos?api_key=${API_KEY_3}&language=ru`);
     const json = await response.json()
@@ -73,7 +74,7 @@ export const TVPage = ({ match }) => {
             </div>
             <img src={`https://image.tmdb.org/t/p/w500${moviedata.poster_path}`} />
 
-            {!results ? <div className='preloader' style={{ width: '990px' }}> <SVGLoaders.Bars /> </div> : <iframe   src={`https://www.youtube-nocookie.com/embed/${results}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>}
+            {results=='' ? <div className='preloader' style={{ width: '990px' }}> <SVGLoaders.Bars /> </div> : <iframe   src={`https://www.youtube-nocookie.com/embed/${results}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>}
             <h1>About Film</h1>
             <div style={{display:'flex'}}>
             <img className='hiddenimg' src={`https://image.tmdb.org/t/p/w500${moviedata.poster_path}`} />
