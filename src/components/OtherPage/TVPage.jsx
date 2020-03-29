@@ -2,12 +2,14 @@ import React, { useContext, useState, useEffect } from 'react'
 import './OtherStyle.scss'
 import { API_URL, API_KEY_3 } from '../../api'
 import * as SVGLoaders from 'svg-loaders-react';
+import { NavLink } from 'react-router-dom';
+import Scrollbars from 'react-custom-scrollbars';
 
 
 export const TVPage = ({ match }) => {
   const [results, setresult] = useState('')
   const [moviedata, setmoviedata] = useState()
-
+  const [recomendation, setrecomendation] = useState('')
 
   console.log(match.params.userid)
 
@@ -16,6 +18,7 @@ export const TVPage = ({ match }) => {
 
     Hotdouble()
     getMovieDetails()
+    getRecomendation()
   }, [match.params.userid])
 
   async function Hotdouble() {
@@ -28,7 +31,7 @@ export const TVPage = ({ match }) => {
     if (json.results[0]) {
       setresult(json.results[0].key)
     }
- 
+
 
 
   };
@@ -43,9 +46,24 @@ export const TVPage = ({ match }) => {
 
 
   };
+  async function getRecomendation() {
+    setrecomendation('')
+    const response = await fetch(`${API_URL}/tv/${match.params.userid}/recommendations?api_key=${API_KEY_3}&language=en-US`);
+    const json = await response.json()
+    let i = 0
+    setrecomendation(json.results.map(el => {
+      if (el.poster_path) {
+        i++;
+        if (i < 7) {
+          return el
+        }
+      }
+    }))
+
+  };
 
 
-  console.log(moviedata)
+  console.log(recomendation)
 
 
   return (
@@ -71,18 +89,34 @@ export const TVPage = ({ match }) => {
               </div>
             </div>
 
-            </div>
-            <img src={`https://image.tmdb.org/t/p/w500${moviedata.poster_path}`} />
+          </div>
+          <img src={`https://image.tmdb.org/t/p/w500${moviedata.poster_path}`} />
 
-            {results=='' ? <div >  </div> : <iframe   src={`https://www.youtube-nocookie.com/embed/${results}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>}
-            <h1>About Film</h1>
-            <div style={{display:'flex'}}>
+          {results == '' ? <div >  </div> : <iframe src={`https://www.youtube-nocookie.com/embed/${results}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>}
+          <h1>About Film</h1>
+          <div style={{ display: 'flex' }}>
             <img className='hiddenimg' src={`https://image.tmdb.org/t/p/w500${moviedata.poster_path}`} />
             <div className='text'>{moviedata.overview} </div>
-            </div>
 
+          </div>
+          <h1>More Like This</h1>
+          {recomendation !== '' &&
 
-          </div>}
+          <Scrollbars  style={{height:370}}>
+         
+           
+            
+              <div className='recomendation'>
+             
+                {recomendation.map(el => <div className='recom_map'>  {el && <NavLink to={`/d/${el.id}`}> <img className='recImg' src={`https://image.tmdb.org/t/p/w500${el.poster_path}`} /> <div className='title_rec' >{el.name}</div> </NavLink>}</div>)}
+
+              </div>
+    
+              </Scrollbars>
+ 
+          }
+
+        </div>}
 
 
 

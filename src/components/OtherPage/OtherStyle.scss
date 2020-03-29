@@ -3,7 +3,7 @@
   width: 76%;
   margin-left: auto;
   margin-right: auto;
- 
+  padding-bottom: 10px;
 
   .wr {
     display: flex;
@@ -160,11 +160,53 @@
 
   }
 }
+.recomendation {
+  display: flex;
 
+  height: 370px;
+  background-color: black;
+  .recom_map {
+       
+    justify-content: space-between;
+    a{
+      text-decoration: none;
+      
+    }
+ 
+ 
+    .recImg {
+      margin-left: 15px;
+      margin-right: 15px;
+      width: 80%;
+    height: 280px;
+    display: block;
+    }
+  
+    .title_rec {
+      color: white;
+      margin-left: 30px;
+      font-size: 18px;
+    }
+    @media screen and (max-width: 1200px){
+      .recImg{
+        width: 180px;
+    
+     
+      }
+      .title_rec {
+      
+        margin-left: 35px;
+        font-size: 16px;
+      }
+    }
+  
+  }
+
+
+}
 @media screen and (max-width: 1200px){
   .wrapp{
    width: 100%;
    
   }
- 
 }
