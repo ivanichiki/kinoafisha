@@ -99,7 +99,7 @@ export const TVPage = ({ match }) => {
             <div className='text'>{moviedata.overview} </div>
 
           </div>
-          <h1>More Like This</h1>
+          {recomendation !== '' &&  <h1>More Like This</h1>}
           {recomendation !== '' &&
 
           <Scrollbars  style={{height:370}}>
