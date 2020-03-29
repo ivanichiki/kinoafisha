@@ -65,7 +65,7 @@ export const OtherPage = ({ match }) => {
     }))
 
   };
-  console.log(moviedata)
+  console.log(recomendation)
 
 
   return (
@@ -101,12 +101,12 @@ export const OtherPage = ({ match }) => {
           <img className='hiddenimg' src={`https://image.tmdb.org/t/p/w500${moviedata.poster_path}`} />
           <div className='text'>{moviedata.overview} </div>
           </div>
-          {recomendation !== '' &&   
+          {recomendation !== ''&recomendation.length!==0  &&   
        <h1>More Like This</h1>}
 
       
    
-    {recomendation !== '' &&
+    {recomendation !== ''&recomendation.length!==0  &&
   <Scrollbars  style={{height:370}}>
 
 
