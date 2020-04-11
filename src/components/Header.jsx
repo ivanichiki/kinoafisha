@@ -62,7 +62,6 @@ export const Header = () => {
   useOutsideAlerter(wrapperRef)
 
   return (
-
     <div className='Header'>
       <div className='wrap_header'>
         <div className='littleheader'>
